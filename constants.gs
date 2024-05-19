@@ -6,7 +6,7 @@ const SHEET_COMP = SHEET.getSheetByName('COMP');
 
 const RANGE_ID = SHEET_ID.getRange(2, 1, SHEET_ID.getLastRow() - 1, 2).getValues();
 const RANGE_ROSTER = SHEET_ROSTER.getRange(2, 1, SHEET_ROSTER.getLastRow() - 1, 8).getValues();
-const RANGE_COMP = SHEET_COMP.getRange(2, 1, SHEET_COMP.getLastRow(), 7).getValues();
+const RANGE_COMP = SHEET_COMP.getRange(2, 1, SHEET_COMP.getLastRow() - 1, 7).getValues();
 
 const ID = RANGE_ID
     .map(([id, nick]) => ({ id, nick }))

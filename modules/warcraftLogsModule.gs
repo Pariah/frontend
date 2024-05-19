@@ -11,9 +11,20 @@
  */
 
 function getMedianPerformanceAverage (char, role = 'DPS', zoneID = 1020, serverName = 'Faerlina', serverRegion = 'US', raidSize = 25) {
+    switch (role.toUpperCase()) {
+        case 'TANK':
+            role = 'Tank';
+            break;
+        case 'HEALER':
+            role = 'Healer';
+            break;
+        default:
+            role = 'DPS';
+    }
     const data = getCharacterData(char, role, zoneID, serverName, serverRegion, raidSize);
-    const median = parseProperty(data, 'medianPerformanceAverage');
-    return median;
+    const median = parseProperty(data, 'medianPerformanceAverage') || 50.0;
+    console.log(char, median);
+    return isNaN(median) ? 50.0 : median;
 }
 
 const TOKEN = getAccessToken();
